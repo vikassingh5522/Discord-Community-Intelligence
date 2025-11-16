@@ -1,0 +1,142 @@
+[
+    {
+        "id": "u1",
+        "username": "gamer101",
+        "joinedAt": "2025-01-02T10:00:00Z",
+        "lastActive": "2025-11-14T12:00:00Z",
+        "messagesSent": 120
+    },
+    {
+        "id": "u2",
+        "username": "pro_player",
+        "joinedAt": "2025-02-10T09:00:00Z",
+        "lastActive": "2025-11-15T17:45:00Z",
+        "messagesSent": 430
+    },
+    {
+        "id": "u3",
+        "username": "noob_master",
+        "joinedAt": "2025-05-20T16:30:00Z",
+        "lastActive": "2025-11-10T08:00:00Z",
+        "messagesSent": 30
+    },
+    {
+        "id": "u4",
+        "username": "tech_wizard",
+        "joinedAt": "2025-03-11T14:20:00Z",
+        "lastActive": "2025-11-16T11:30:00Z",
+        "messagesSent": 210
+    },
+    {
+        "id": "u5",
+        "username": "silent_shadow",
+        "joinedAt": "2025-04-05T12:10:00Z",
+        "lastActive": "2025-11-12T08:15:00Z",
+        "messagesSent": 95
+    },
+    {
+        "id": "u6",
+        "username": "speed_runner",
+        "joinedAt": "2025-06-18T09:45:00Z",
+        "lastActive": "2025-11-15T19:00:00Z",
+        "messagesSent": 300
+    },
+    {
+        "id": "u7",
+        "username": "crypto_king",
+        "joinedAt": "2025-07-01T10:00:00Z",
+        "lastActive": "2025-11-14T11:10:00Z",
+        "messagesSent": 180
+    },
+    {
+        "id": "u8",
+        "username": "foodie_life",
+        "joinedAt": "2025-03-22T17:30:00Z",
+        "lastActive": "2025-11-13T15:05:00Z",
+        "messagesSent": 60
+    },
+    {
+        "id": "u9",
+        "username": "chill_vibes",
+        "joinedAt": "2025-01-15T08:30:00Z",
+        "lastActive": "2025-11-16T10:25:00Z",
+        "messagesSent": 420
+    },
+    {
+        "id": "u10",
+        "username": "anime_fan",
+        "joinedAt": "2025-02-28T11:50:00Z",
+        "lastActive": "2025-11-16T09:12:00Z",
+        "messagesSent": 155
+    },
+    {
+        "id": "u11",
+        "username": "music_maker",
+        "joinedAt": "2025-05-01T15:00:00Z",
+        "lastActive": "2025-11-15T22:40:00Z",
+        "messagesSent": 375
+    },
+    {
+        "id": "u12",
+        "username": "space_explorer",
+        "joinedAt": "2025-06-10T10:40:00Z",
+        "lastActive": "2025-11-14T07:55:00Z",
+        "messagesSent": 52
+    },
+    {
+        "id": "u13",
+        "username": "funny_buddy",
+        "joinedAt": "2025-08-04T18:15:00Z",
+        "lastActive": "2025-11-16T13:10:00Z",
+        "messagesSent": 480
+    },
+    {
+        "id": "u14",
+        "username": "legend_player",
+        "joinedAt": "2025-07-21T09:25:00Z",
+        "lastActive": "2025-11-13T18:20:00Z",
+        "messagesSent": 260
+    },
+    {
+        "id": "u15",
+        "username": "travel_soul",
+        "joinedAt": "2025-04-15T07:00:00Z",
+        "lastActive": "2025-11-12T17:40:00Z",
+        "messagesSent": 110
+    },
+    {
+        "id": "u16",
+        "username": "coder_pro",
+        "joinedAt": "2025-05-25T14:50:00Z",
+        "lastActive": "2025-11-16T15:05:00Z",
+        "messagesSent": 540
+    },
+    {
+        "id": "u17",
+        "username": "fitness_freak",
+        "joinedAt": "2025-06-30T06:45:00Z",
+        "lastActive": "2025-11-15T05:30:00Z",
+        "messagesSent": 205
+    },
+    {
+        "id": "u18",
+        "username": "meme_lord",
+        "joinedAt": "2025-07-12T11:20:00Z",
+        "lastActive": "2025-11-14T20:00:00Z",
+        "messagesSent": 600
+    },
+    {
+        "id": "u19",
+        "username": "book_reader",
+        "joinedAt": "2025-08-22T13:40:00Z",
+        "lastActive": "2025-11-15T08:55:00Z",
+        "messagesSent": 85
+    },
+    {
+        "id": "u20",
+        "username": "night_owl",
+        "joinedAt": "2025-03-12T23:10:00Z",
+        "lastActive": "2025-11-16T02:30:00Z",
+        "messagesSent": 390
+    }
+]

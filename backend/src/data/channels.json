@@ -1,0 +1,52 @@
+[
+    {
+        "id": "c1",
+        "name": "general",
+        "category": "General"
+    },
+    {
+        "id": "c2",
+        "name": "gaming",
+        "category": "Gaming"
+    },
+    {
+        "id": "c3",
+        "name": "announcements",
+        "category": "Info"
+    },
+    {
+        "id": "c4",
+        "name": "technology",
+        "category": "Tech"
+    },
+    {
+        "id": "c5",
+        "name": "music",
+        "category": "Entertainment"
+    },
+    {
+        "id": "c6",
+        "name": "movies",
+        "category": "Entertainment"
+    },
+    {
+        "id": "c7",
+        "name": "fitness",
+        "category": "Lifestyle"
+    },
+    {
+        "id": "c8",
+        "name": "education",
+        "category": "Knowledge"
+    },
+    {
+        "id": "c9",
+        "name": "sports",
+        "category": "Activities"
+    },
+    {
+        "id": "c10",
+        "name": "memes",
+        "category": "Fun"
+    }
+]

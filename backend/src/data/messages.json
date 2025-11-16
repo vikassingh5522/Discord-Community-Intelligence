@@ -1,0 +1,142 @@
+[
+    {
+        "id": "m1",
+        "channelId": "c1",
+        "userId": "u1",
+        "content": "Hello everyone! #welcome",
+        "timestamp": "2025-11-12T10:15:00Z"
+    },
+    {
+        "id": "m2",
+        "channelId": "c2",
+        "userId": "u2",
+        "content": "Anyone up for a match? #gaming",
+        "timestamp": "2025-11-14T18:00:00Z"
+    },
+    {
+        "id": "m3",
+        "channelId": "c1",
+        "userId": "u3",
+        "content": "Congrats on the event! #updates",
+        "timestamp": "2025-11-14T19:30:00Z"
+    },
+    {
+        "id": "m4",
+        "channelId": "c2",
+        "userId": "u2",
+        "content": "GG everyone #gaming",
+        "timestamp": "2025-11-15T07:15:00Z"
+    },
+    {
+        "id": "m5",
+        "channelId": "c1",
+        "userId": "u2",
+        "content": "Daily news: server maintenance tomorrow #updates",
+        "timestamp": "2025-11-15T09:00:00Z"
+    },
+    {
+        "id": "m6",
+        "channelId": "c3",
+        "userId": "u1",
+        "content": "Server rules updated #announcement",
+        "timestamp": "2025-10-25T12:00:00Z"
+    },
+    {
+        "id": "m7",
+        "channelId": "c3",
+        "userId": "u4",
+        "content": "New features coming soon! #announcement",
+        "timestamp": "2025-11-13T14:20:00Z"
+    },
+    {
+        "id": "m8",
+        "channelId": "c2",
+        "userId": "u5",
+        "content": "Just unlocked a new achievement! #gaming",
+        "timestamp": "2025-11-15T16:45:00Z"
+    },
+    {
+        "id": "m9",
+        "channelId": "c1",
+        "userId": "u3",
+        "content": "Good morning team! #general",
+        "timestamp": "2025-11-16T06:10:00Z"
+    },
+    {
+        "id": "m10",
+        "channelId": "c3",
+        "userId": "u2",
+        "content": "Please attend the meeting at 5 PM #announcement",
+        "timestamp": "2025-11-16T08:00:00Z"
+    },
+    {
+        "id": "m11",
+        "channelId": "c1",
+        "userId": "u6",
+        "content": "Does anyone have updates on the new release? #updates",
+        "timestamp": "2025-11-16T09:25:00Z"
+    },
+    {
+        "id": "m12",
+        "channelId": "c2",
+        "userId": "u1",
+        "content": "Match starting in 10 minutes! #gaming",
+        "timestamp": "2025-11-16T11:40:00Z"
+    },
+    {
+        "id": "m13",
+        "channelId": "c1",
+        "userId": "u4",
+        "content": "Welcome to all new members! #welcome",
+        "timestamp": "2025-11-16T12:10:00Z"
+    },
+    {
+        "id": "m14",
+        "channelId": "c2",
+        "userId": "u3",
+        "content": "That last round was intense! #gaming",
+        "timestamp": "2025-11-16T13:50:00Z"
+    },
+    {
+        "id": "m15",
+        "channelId": "c3",
+        "userId": "u6",
+        "content": "Don't forget to update your profiles #announcement",
+        "timestamp": "2025-11-16T14:30:00Z"
+    },
+    {
+        "id": "m16",
+        "channelId": "c1",
+        "userId": "u5",
+        "content": "Chilling with some music today #general",
+        "timestamp": "2025-11-16T15:05:00Z"
+    },
+    {
+        "id": "m17",
+        "channelId": "c2",
+        "userId": "u1",
+        "content": "Who wants to team up for ranked? #gaming",
+        "timestamp": "2025-11-16T16:00:00Z"
+    },
+    {
+        "id": "m18",
+        "channelId": "c3",
+        "userId": "u2",
+        "content": "New guidelines published #announcement",
+        "timestamp": "2025-11-16T17:15:00Z"
+    },
+    {
+        "id": "m19",
+        "channelId": "c1",
+        "userId": "u4",
+        "content": "Any plans for tonight? #general",
+        "timestamp": "2025-11-16T18:25:00Z"
+    },
+    {
+        "id": "m20",
+        "channelId": "c2",
+        "userId": "u6",
+        "content": "Practice makes perfect! #gaming",
+        "timestamp": "2025-11-16T19:10:00Z"
+    }
+]
