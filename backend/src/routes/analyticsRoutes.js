@@ -6,7 +6,13 @@ import {
   getChannelsController,
   getTrendingTopicsController,
   getMessageActivityController,
-  getByChannelController
+  getByChannelController,
+  getRoleDistributionController,
+  assignRoleController,
+  getEmojiTrendsController,
+  getMemeTrendsController,
+  getLinkSharingController,
+  getVoiceMetricsController
 } from "../controllers/analyticsController.js";
 
 import { authMiddleware } from "../middlewares/authMiddleware.js";
@@ -21,6 +27,14 @@ router.get("/trending-topics", authMiddleware, getTrendingTopicsController);
 router.get("/message-activity", authMiddleware, getMessageActivityController);
 router.get("/by-channel/:channelId", authMiddleware, getByChannelController);
 
+router.get("/roles", authMiddleware, getRoleDistributionController);
+router.post("/roles/:userId", authMiddleware, assignRoleController);
 
+router.get("/emoji-trends", authMiddleware, getEmojiTrendsController);
+router.get("/meme-trends", authMiddleware, getMemeTrendsController);
+router.get("/link-sharing", authMiddleware, getLinkSharingController);
+
+
+router.get("/voice-metrics", authMiddleware, getVoiceMetricsController);
 
 export default router;

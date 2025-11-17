@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+
 import SidebarNav from "../components/SidebarNav";
 
-
+// Dashboard Pages
 import SummaryPage from "./SummaryPage";
 import GrowthPage from "./GrowthPage";
 import ActiveUsersPage from "./ActiveUsersPage";
 import TrendingTopicsPage from "./TrendingTopicsPage";
 import TopChannelsPage from "./TopChannelsPage";
 import MessageFrequency from "./MessageFrequency";
-import RoleDistributionPage from "./RoleDistributionPage"; 
+import RoleDistributionPage from "./RoleDistributionPage";
+import EmojiTrendsPage from "./EmojiTrendsPage";
+import MemeTrendsPage from "./MemeTrendsPage";
+import LinkSharingPage from "./LinkSharingPage";
+import VoiceMetricsPage from "./VoiceMetricsPage";   
 
 export default function Dashboard() {
   const [active, setActive] = useState("summary");
@@ -19,7 +24,6 @@ export default function Dashboard() {
     const storedUser = localStorage.getItem("username");
     if (storedUser) setUsername(storedUser);
   }, []);
-
 
   const renderActive = () => {
     switch (active) {
@@ -41,21 +45,21 @@ export default function Dashboard() {
       case "trending":
         return <TrendingTopicsPage />;
 
-      case "roles":                   
+      case "roles":
         return <RoleDistributionPage />;
 
-      
       case "emoji":
-        return <div className="text-white">Emoji Trends Coming Soon...</div>;
+        return <EmojiTrendsPage />;
 
       case "memes":
-        return <div className="text-white">Meme Trends Coming Soon...</div>;
+        return <MemeTrendsPage />;
 
       case "links":
-        return <div className="text-white">Link Sharing Analytics Coming Soon...</div>;
+        return <LinkSharingPage />;
 
+      // ⭐ NOW VOICE METRICS PAGE WORKING
       case "voice":
-        return <div className="text-white">Voice Metrics Coming Soon...</div>;
+        return <VoiceMetricsPage />;
 
       case "community":
         return <div className="text-white">Community Health Coming Soon...</div>;
@@ -75,15 +79,12 @@ export default function Dashboard() {
       case "events":
         return <div className="text-white">Event Tracking Coming Soon...</div>;
 
-      case "nft":
-        return <div className="text-white">NFT Community Insights Coming Soon...</div>;
-
       default:
         return <SummaryPage />;
     }
   };
 
-  // Logout
+
   const handleLogout = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("token");
@@ -91,16 +92,12 @@ export default function Dashboard() {
   };
 
   return (
-    <div
-      className="w-screen h-screen flex overflow-hidden"
-      style={{ backgroundColor: "#0D1321" }}
-    >
-     
+    <div className="w-screen h-screen flex overflow-hidden" style={{ backgroundColor: "#0D1321" }}>
+
       <SidebarNav active={active} setActive={setActive} />
 
       <div className="flex-1 flex flex-col">
 
-      
         <header className="w-full h-16 bg-[#111827] text-white flex items-center justify-between px-6 shadow-md">
           <h2 className="text-xl font-semibold tracking-wide">
             🚀 Discord Analytics Panel
@@ -121,7 +118,6 @@ export default function Dashboard() {
           </div>
         </header>
 
-   
         <main className="flex-1 overflow-auto p-6 pt-6">
           <motion.div
             key={active}
@@ -133,7 +129,6 @@ export default function Dashboard() {
             {renderActive()}
           </motion.div>
         </main>
-
       </div>
     </div>
   );

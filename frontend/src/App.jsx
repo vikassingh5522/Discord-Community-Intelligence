@@ -2,33 +2,45 @@ import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
-
 import ProtectedRoute from "./components/ProtectedRoute";
 
+// Public Pages
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import About from "./pages/About";
+
+// Protected Dashboard
 import Dashboard from "./pages/Dashboard";
+
+// Protected Feature Pages
+import EmojiTrendsPage from "./pages/EmojiTrendsPage";
+import MemeTrendsPage from "./pages/MemeTrendsPage";
+import LinkSharingPage from "./pages/LinkSharingPage";
+import VoiceMetricsPage from "./pages/VoiceMetricsPage"; 
 
 export default function App() {
   const location = useLocation();
 
-  
+  // Hide navbar ONLY on dashboard page
   const hideNavbar = location.pathname === "/dashboard";
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex flex-col">
-
-  
+    <div className="min-h-screen w-full bg-gradient-to-br 
+      from-gray-900 via-gray-800 to-black text-white flex flex-col"
+    >
       {!hideNavbar && <Navbar />}
 
       <main className="flex-grow w-full">
         <Routes>
 
+          {/* PUBLIC ROUTES */}
           <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
+          {/* PROTECTED ROUTES */}
           <Route
             path="/dashboard"
             element={
@@ -38,9 +50,44 @@ export default function App() {
             }
           />
 
+          <Route
+            path="/emoji-trends"
+            element={
+              <ProtectedRoute>
+                <EmojiTrendsPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/meme-trends"
+            element={
+              <ProtectedRoute>
+                <MemeTrendsPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/link-sharing"
+            element={
+              <ProtectedRoute>
+                <LinkSharingPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/voice-metrics"
+            element={
+              <ProtectedRoute>
+                <VoiceMetricsPage />
+              </ProtectedRoute>
+            }
+          />
+
         </Routes>
       </main>
-
     </div>
   );
 }
