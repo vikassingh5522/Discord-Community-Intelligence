@@ -33,19 +33,15 @@ export default function LinkSharingPage() {
           <p>Total URLs Shared</p>
           <h2 className="text-3xl">{stats.totalLinks}</h2>
         </div>
-
         <div className="bg-[#1F2937] p-5 rounded-lg">
           <p>Unique Domains</p>
           <h2 className="text-3xl">{stats.topDomains.length}</h2>
         </div>
-
         <div className="bg-[#1F2937] p-5 rounded-lg">
           <p>Active Link Sharers</p>
           <h2 className="text-3xl">{stats.topUsers.length}</h2>
         </div>
       </div>
-
-    
       <h2 className="text-xl font-semibold">🌍 Top Shared Domains</h2>
       <div className="bg-[#1F2937] p-5 rounded-lg mb-8">
         {stats.topDomains.length === 0 ? "No domain data" : stats.topDomains.map((d, i) => (
@@ -55,8 +51,6 @@ export default function LinkSharingPage() {
           </div>
         ))}
       </div>
-
-      
       <h2 className="text-xl font-semibold">🔗 Most Popular URLs</h2>
       <div className="bg-[#1F2937] p-5 rounded-lg mb-8">
         {stats.topUrls.length === 0 ? "No URLs" : stats.topUrls.map((u, i) => (
@@ -66,8 +60,6 @@ export default function LinkSharingPage() {
           </div>
         ))}
       </div>
-
-     
       <h2 className="text-xl font-semibold">👥 Top Users Sharing Links</h2>
       <div className="bg-[#1F2937] p-5 rounded-lg mb-8">
         {stats.topUsers.length === 0 ? "No users" : stats.topUsers.map((u, i) => (

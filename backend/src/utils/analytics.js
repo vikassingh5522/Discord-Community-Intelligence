@@ -219,11 +219,11 @@ export const getEmojiTrends = async () => {
   for (const m of messages) {
     const emojis = (m.content || "").match(emojiRegex) || [];
 
-    
+
     for (const e of emojis) {
       emojiCounts[e] = (emojiCounts[e] || 0) + 1;
 
-    
+
       const day = m.timestamp.slice(0, 10);
       usageOverTime[day] = (usageOverTime[day] || 0) + 1;
 
@@ -324,7 +324,7 @@ export const getLinkSharing = async (topN = 10) => {
 
   messages.forEach((m) => {
 
-    
+
     let extracted = [];
 
     if (m.content) {
@@ -349,7 +349,7 @@ export const getLinkSharing = async (topN = 10) => {
         userLinkCounts[m.userId] = (userLinkCounts[m.userId] || 0) + 1;
         channelLinkCounts[m.channelId] = (channelLinkCounts[m.channelId] || 0) + 1;
 
-      } catch (err) {}
+      } catch (err) { }
     });
   });
 
@@ -400,7 +400,7 @@ export const getVoiceMetrics = async (topN = 10) => {
   const voiceEmojis = ["🎤", "🎧", "🔊", "🎙️", "🔉", "🔈"];
 
   messages.forEach(m => {
-   
+
     const hasVoice = m.voiceUrl && m.voiceUrl.trim() !== "";
 
     if (hasVoice) {
@@ -562,7 +562,7 @@ export const getModeratorEffectiveness = async () => {
 export const getRaidDetections = async () => {
   const { users, messages } = await loadAllData();
 
- 
+
   if (!messages || messages.length === 0) {
     return { totalRaids: 0, raids: [] };
   }
@@ -573,7 +573,7 @@ export const getRaidDetections = async () => {
   );
 
   const raids = [];
-  const TIME_WINDOW = 10 * 60 * 1000; 
+  const TIME_WINDOW = 10 * 60 * 1000;
   const MIN_USERS = 10;
 
   for (let start = 0; start < sorted.length; start++) {
@@ -585,15 +585,15 @@ export const getRaidDetections = async () => {
       const msg = sorted[i];
       const msgTime = new Date(msg.timestamp);
 
-     
+
       if (msgTime - startTime > TIME_WINDOW) break;
 
-     
+
       uniqueUsers.add(msg.userId);
       endTime = msgTime;
     }
 
-    
+
     if (uniqueUsers.size >= MIN_USERS) {
       const raidUsers = [...uniqueUsers].map((id) => {
         const u = users.find((x) => x.id === id);
@@ -612,12 +612,12 @@ export const getRaidDetections = async () => {
           uniqueUsers.size > 50
             ? "🔥 Critical"
             : uniqueUsers.size > 20
-            ? "⚠️ High"
-            : "⚡ Medium",
+              ? "⚠️ High"
+              : "⚡ Medium",
         users: raidUsers,
       });
 
-     
+
       start += [...uniqueUsers].length - 1;
     }
   }
@@ -628,13 +628,11 @@ export const getRaidDetections = async () => {
   };
 };
 
-// -----------------------------
-// EVENT SUCCESS TRACKING
-// -----------------------------
+
 export const getEventTracking = async () => {
   const { messages, users } = await loadAllData();
 
-  // Any message containing "event" is considered part of an event
+
   const eventMessages = messages.filter((m) =>
     (m.content || "").toLowerCase().includes("event")
   );
@@ -642,15 +640,13 @@ export const getEventTracking = async () => {
   if (eventMessages.length === 0)
     return { totalEvents: 0, events: [] };
 
-  // Group by day
   const grouped = {};
   eventMessages.forEach((m) => {
-    const day = m.timestamp.slice(0, 10); // YYYY-MM-DD
+    const day = m.timestamp.slice(0, 10);
     if (!grouped[day]) grouped[day] = [];
     grouped[day].push(m);
   });
 
-  // Compute analytics for each event day
   const results = Object.entries(grouped).map(([day, msgs]) => {
     const participants = new Set(msgs.map((m) => m.userId));
 
@@ -670,7 +666,6 @@ export const getEventTracking = async () => {
     };
   });
 
-  // Convert analytics → formatted event cards for frontend
   const formatted = results.map((ev) => ({
     title: `Event on ${ev.date}`,
     type: "Message Activity Spike",
@@ -679,7 +674,7 @@ export const getEventTracking = async () => {
       `👥 ${ev.uniqueParticipants} users\n` +
       `⭐ Engagement Score: ${ev.engagementScore}`,
     timestamp: ev.date,
-    messages: ev.messages, // keep raw messages for detailed view
+    messages: ev.messages,
   }));
 
   return {

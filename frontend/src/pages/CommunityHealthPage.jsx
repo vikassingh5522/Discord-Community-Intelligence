@@ -22,7 +22,6 @@ export default function CommunityHealthPage() {
         💠 Community Health Dashboard
       </h1>
 
-      {/* TAB BUTTONS */}
       <div className="flex gap-3 mb-6">
         {tabs.map((t) => (
           <button
@@ -41,7 +40,6 @@ export default function CommunityHealthPage() {
         ))}
       </div>
 
-      {/* ANIMATED CONTENT */}
       <div className="mt-4">
         <AnimatePresence mode="wait">
           {activeTab === "engagement" && (

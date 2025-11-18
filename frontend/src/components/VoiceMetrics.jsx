@@ -26,9 +26,6 @@ export default function VoiceMetrics() {
   return (
     <div className="p-6 text-white">
       <h1 className="text-3xl font-bold mb-6">🎙 Voice Metrics Dashboard</h1>
-
-
-      {/* ============== SUMMARY CARDS ============== */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
 
         <div className="bg-[#1F2937] p-5 rounded-lg">
@@ -47,9 +44,6 @@ export default function VoiceMetrics() {
         </div>
 
       </div>
-
-
-      {/* ============== TOP USERS ============== */}
       <h2 className="text-xl font-semibold mb-2">👤 Top Users Sending Voice Messages</h2>
       <div className="bg-[#1F2937] p-5 rounded-lg mb-8">
         {stats.topUsers.length === 0 ? (
@@ -63,9 +57,6 @@ export default function VoiceMetrics() {
           ))
         )}
       </div>
-
-
-      {/* ============== TOP CHANNELS ============== */}
       <h2 className="text-xl font-semibold mb-2">📢 Top Channels for Voice Messages</h2>
       <div className="bg-[#1F2937] p-5 rounded-lg mb-8">
         {stats.topChannels.length === 0 ? (
@@ -79,9 +70,6 @@ export default function VoiceMetrics() {
           ))
         )}
       </div>
-
-
-      {/* ============== EMOJI USAGE ============== */}
       <h2 className="text-xl font-semibold mb-2">🎧 Most Used Voice Emojis</h2>
       <div className="bg-[#1F2937] p-5 rounded-lg">
         {stats.topEmojis.length === 0 ? (

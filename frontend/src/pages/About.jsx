@@ -15,7 +15,7 @@ export default function About() {
         className="relative w-screen min-h-screen bg-[#0d102b] text-white overflow-x-hidden overflow-y-scroll"
         style={{ fontFamily: "Sora, sans-serif" }}
       >
-      
+
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-10 -left-12 w-80 h-80 bg-purple-600 rounded-full opacity-20 blur-[120px]" />
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-indigo-600 rounded-full opacity-20 blur-[140px]" />
@@ -23,7 +23,6 @@ export default function About() {
 
         <section className="w-full min-h-screen flex flex-col lg:flex-row items-center justify-center px-6 text-center relative z-20 gap-16 lg:gap-28">
 
-      
           <motion.img
             src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6847184f796a07b05ac1f559_hero-d.webp"
             alt="Analytics Visual"

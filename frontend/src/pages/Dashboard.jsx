@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 import SidebarNav from "../components/SidebarNav";
 
-// Dashboard Pages
+
 import SummaryPage from "./SummaryPage";
 import GrowthPage from "./GrowthPage";
 import ActiveUsersPage from "./ActiveUsersPage";
@@ -17,7 +17,6 @@ import LinkSharingPage from "./LinkSharingPage";
 import VoiceMetricsPage from "./VoiceMetricsPage";
 import CommunityHealthPage from "./CommunityHealthPage";
 
-// ⭐ Newly added pages
 import RaidDetectionPage from "./RaidDetectionPage";
 import EventTrackingPage from "./EventTrackingPage";
 
@@ -30,7 +29,6 @@ export default function Dashboard() {
     if (storedUser) setUsername(storedUser);
   }, []);
 
-  // ⭐ ROUTER FOR ALL PAGES
   const renderActive = () => {
     switch (active) {
       case "summary": return <SummaryPage />;
@@ -45,8 +43,6 @@ export default function Dashboard() {
       case "links": return <LinkSharingPage />;
       case "voice": return <VoiceMetricsPage />;
       case "community": return <CommunityHealthPage />;
-
-      // ⭐ NEW WORKING PAGES
       case "raids": return <RaidDetectionPage />;
       case "events": return <EventTrackingPage />;
 
@@ -66,13 +62,11 @@ export default function Dashboard() {
       className="w-screen h-screen flex overflow-hidden"
       style={{ backgroundColor: "#0D1321" }}
     >
-      {/* Sidebar Navigation */}
+
       <SidebarNav active={active} setActive={setActive} />
 
-      {/* Main Dashboard Area */}
       <div className="flex-1 flex flex-col">
 
-        {/* Header */}
         <header className="w-full h-16 bg-[#111827] text-white flex items-center justify-between px-6 shadow-md">
           <h2 className="text-xl font-semibold tracking-wide">
             🚀 Discord Analytics Panel
@@ -93,7 +87,6 @@ export default function Dashboard() {
           </div>
         </header>
 
-        {/* Content */}
         <main className="flex-1 overflow-auto p-6 pt-6">
           <motion.div
             key={active}

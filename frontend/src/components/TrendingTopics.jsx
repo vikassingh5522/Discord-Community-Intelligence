@@ -18,7 +18,6 @@ export default function TrendingTopics({ data }) {
           ))}
         </div>
       </div>
-
       <div className="mt-4">
         <div className="text-sm text-gray-500">Top hashtags</div>
         <div className="space-y-2 mt-2">

@@ -148,7 +148,6 @@ export default function SidebarNav({ active, setActive }) {
 
   return (
     <>
-      {/* Desktop Sidebar */}
       <aside
         className="
           hidden md:flex flex-col 
@@ -186,8 +185,6 @@ export default function SidebarNav({ active, setActive }) {
           © {new Date().getFullYear()} Discord Analytics
         </div>
       </aside>
-
-      {/* Mobile Top Navigation */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-30 bg-[#0D1321] border-b border-white/5">
         <div className="flex gap-2 overflow-x-auto p-3 scrollbar-thin">
           {items.map((it) => {

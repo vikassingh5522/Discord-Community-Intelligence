@@ -10,7 +10,6 @@ export default function RoleDistribution({ data }) {
 
   return (
     <div className="space-y-6">
-      {/* Summary Card */}
       <div className="p-4 bg-white/10 rounded-xl shadow flex justify-between">
         <div>
           <p className="text-gray-300 text-sm">Total Roles</p>
@@ -21,8 +20,6 @@ export default function RoleDistribution({ data }) {
           <p className="text-2xl font-bold text-white">{totalMembers}</p>
         </div>
       </div>
-
-      {/* Pie Chart */}
       <div className="w-full h-[320px]">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
@@ -44,8 +41,6 @@ export default function RoleDistribution({ data }) {
           </PieChart>
         </ResponsiveContainer>
       </div>
-
-      {/* Role Breakdown */}
       <div className="space-y-3">
         <h2 className="text-white text-lg">Role Breakdown</h2>
         <ul className="space-y-2">

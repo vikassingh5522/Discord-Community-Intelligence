@@ -10,7 +10,6 @@ export default function TopChannels({ data }) {
       </div>
     );
 
-  // Max messages for bar scaling
   const maxMessages = Math.max(...data.map((c) => c.messages));
 
   return (
@@ -24,7 +23,6 @@ export default function TopChannels({ data }) {
           className="p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition cursor-pointer"
         >
           <div className="flex justify-between items-center">
-            {/* LEFT SIDE */}
             <div>
               <div className="flex items-center gap-2">
                 <span className="bg-indigo-600/80 px-2 py-0.5 rounded text-xs font-bold">
@@ -42,14 +40,10 @@ export default function TopChannels({ data }) {
                 Last active: {ch.lastActive || "unknown"}
               </p>
             </div>
-
-            {/* RIGHT SIDE NUMBER */}
             <div className="text-2xl font-bold text-indigo-400">
               {ch.messages}
             </div>
           </div>
-
-          {/* MESSAGE BAR */}
           <div className="w-full bg-white/10 rounded-full h-2 mt-4 overflow-hidden">
             <div
               className="bg-indigo-500 h-2 rounded-full transition-all"
