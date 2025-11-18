@@ -4,24 +4,27 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-// Public Pages
+
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import About from "./pages/About";
 
-// Protected Dashboard
+
 import Dashboard from "./pages/Dashboard";
 
-// Feature Pages
+
 import EmojiTrendsPage from "./pages/EmojiTrendsPage";
 import MemeTrendsPage from "./pages/MemeTrendsPage";
 import LinkSharingPage from "./pages/LinkSharingPage";
 import VoiceMetricsPage from "./pages/VoiceMetricsPage";
 
-// ⭐ COMMUNITY HEALTH PAGE
+
 import CommunityHealthPage from "./pages/CommunityHealthPage";
 
+
+import RaidDetectionPage from "./pages/RaidDetectionPage";     
+import EventTrackingPage from "./pages/EventTrackingPage";     
 export default function App() {
   const location = useLocation();
 
@@ -37,13 +40,12 @@ export default function App() {
       <main className="flex-grow w-full">
         <Routes>
 
-          {/* PUBLIC ROUTES */}
+     
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          {/* PROTECTED ROUTES */}
           <Route
             path="/dashboard"
             element={
@@ -53,7 +55,7 @@ export default function App() {
             }
           />
 
-          {/* Analytics Pages */}
+       
           <Route
             path="/emoji-trends"
             element={
@@ -90,12 +92,30 @@ export default function App() {
             }
           />
 
-          {/* ⭐ COMMUNITY HEALTH MASTER PAGE */}
           <Route
             path="/community-health"
             element={
               <ProtectedRoute>
                 <CommunityHealthPage />
+              </ProtectedRoute>
+            }
+          />
+
+         
+          <Route
+            path="/raids"
+            element={
+              <ProtectedRoute>
+                <RaidDetectionPage />     
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/events"
+            element={
+              <ProtectedRoute>
+                <EventTrackingPage />      
               </ProtectedRoute>
             }
           />

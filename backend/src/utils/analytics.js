@@ -453,10 +453,6 @@ export const getVoiceMetrics = async (topN = 10) => {
   };
 };
 
-
-// import { loadAllData } from "./dataLoader.js";
-
-// ENGAGEMENT SCORE
 export const getEngagementScores = async () => {
   const { users, messages } = await loadAllData();
 
@@ -488,7 +484,7 @@ export const getEngagementScores = async () => {
   };
 };
 
-// TOXICITY
+
 export const getToxicityStats = async () => {
   const { users, messages } = await loadAllData();
 
@@ -513,7 +509,7 @@ export const getToxicityStats = async () => {
   };
 };
 
-// RETENTION
+
 export const getNewMemberRetention = async () => {
   const { users } = await loadAllData();
 
@@ -541,7 +537,7 @@ export const getNewMemberRetention = async () => {
   };
 };
 
-// MODERATOR EFFECTIVENESS
+
 export const getModeratorEffectiveness = async () => {
   const { users } = await loadAllData();
 
@@ -558,5 +554,136 @@ export const getModeratorEffectiveness = async () => {
         averageResponseTime: m.avgResponseTime || 0
       }))
       .sort((a, b) => b.deletedMessages - a.deletedMessages)
+  };
+};
+
+
+
+export const getRaidDetections = async () => {
+  const { users, messages } = await loadAllData();
+
+ 
+  if (!messages || messages.length === 0) {
+    return { totalRaids: 0, raids: [] };
+  }
+
+
+  const sorted = [...messages].sort(
+    (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
+  );
+
+  const raids = [];
+  const TIME_WINDOW = 10 * 60 * 1000; 
+  const MIN_USERS = 10;
+
+  for (let start = 0; start < sorted.length; start++) {
+    const startTime = new Date(sorted[start].timestamp);
+    const uniqueUsers = new Set();
+    let endTime = startTime;
+
+    for (let i = start; i < sorted.length; i++) {
+      const msg = sorted[i];
+      const msgTime = new Date(msg.timestamp);
+
+     
+      if (msgTime - startTime > TIME_WINDOW) break;
+
+     
+      uniqueUsers.add(msg.userId);
+      endTime = msgTime;
+    }
+
+    
+    if (uniqueUsers.size >= MIN_USERS) {
+      const raidUsers = [...uniqueUsers].map((id) => {
+        const u = users.find((x) => x.id === id);
+        return {
+          id,
+          username: u?.username || `User-${id}`,
+          joinedAt: u?.joinedAt || "N/A",
+        };
+      });
+
+      raids.push({
+        start: startTime.toISOString(),
+        end: endTime.toISOString(),
+        count: uniqueUsers.size,
+        severity:
+          uniqueUsers.size > 50
+            ? "🔥 Critical"
+            : uniqueUsers.size > 20
+            ? "⚠️ High"
+            : "⚡ Medium",
+        users: raidUsers,
+      });
+
+     
+      start += [...uniqueUsers].length - 1;
+    }
+  }
+
+  return {
+    totalRaids: raids.length,
+    raids,
+  };
+};
+
+// -----------------------------
+// EVENT SUCCESS TRACKING
+// -----------------------------
+export const getEventTracking = async () => {
+  const { messages, users } = await loadAllData();
+
+  // Any message containing "event" is considered part of an event
+  const eventMessages = messages.filter((m) =>
+    (m.content || "").toLowerCase().includes("event")
+  );
+
+  if (eventMessages.length === 0)
+    return { totalEvents: 0, events: [] };
+
+  // Group by day
+  const grouped = {};
+  eventMessages.forEach((m) => {
+    const day = m.timestamp.slice(0, 10); // YYYY-MM-DD
+    if (!grouped[day]) grouped[day] = [];
+    grouped[day].push(m);
+  });
+
+  // Compute analytics for each event day
+  const results = Object.entries(grouped).map(([day, msgs]) => {
+    const participants = new Set(msgs.map((m) => m.userId));
+
+    const engagementScore =
+      participants.size * 2 + msgs.length * 0.5;
+
+    return {
+      date: day,
+      totalMessages: msgs.length,
+      uniqueParticipants: participants.size,
+      engagementScore: Number(engagementScore.toFixed(2)),
+      messages: msgs.map((m) => ({
+        userId: m.userId,
+        content: m.content,
+        timestamp: m.timestamp,
+      })),
+    };
+  });
+
+  // Convert analytics → formatted event cards for frontend
+  const formatted = results.map((ev) => ({
+    title: `Event on ${ev.date}`,
+    type: "Message Activity Spike",
+    description:
+      `📌 ${ev.totalMessages} messages\n` +
+      `👥 ${ev.uniqueParticipants} users\n` +
+      `⭐ Engagement Score: ${ev.engagementScore}`,
+    timestamp: ev.date,
+    messages: ev.messages, // keep raw messages for detailed view
+  }));
+
+  return {
+    totalEvents: formatted.length,
+    events: formatted,
   };
 };

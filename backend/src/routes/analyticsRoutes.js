@@ -16,7 +16,9 @@ import {
   getEngagementScoreController,
   getToxicityStatsController,
   getMemberRetentionController,
-  getModeratorEffectivenessController
+  getModeratorEffectivenessController,
+  getRaidDetectionController,
+  getEventTrackingController
 } from "../controllers/analyticsController.js";
 
 import { authMiddleware } from "../middlewares/authMiddleware.js";
@@ -44,6 +46,11 @@ router.get("/engagement", authMiddleware, getEngagementScoreController);
 router.get("/toxicity", authMiddleware, getToxicityStatsController);
 router.get("/retention", authMiddleware, getMemberRetentionController);
 router.get("/moderators", authMiddleware, getModeratorEffectivenessController);
+
+router.get("/raids", authMiddleware, getRaidDetectionController);
+router.get("/events", authMiddleware, getEventTrackingController);
+
+
 
 
 export default router;

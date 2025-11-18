@@ -105,7 +105,6 @@ export default function SidebarNav({ active, setActive }) {
       )
     },
 
-    // ✅ FIXED COMMUNITY HEALTH ICON
     {
       id: "community", label: "Community Health",
       icon: (

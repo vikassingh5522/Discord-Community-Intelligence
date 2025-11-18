@@ -186,3 +186,26 @@ export const getModeratorEffectivenessController = async (req, res) => {
     res.status(500).json({ message: "Failed to get moderator effectiveness", error: err.message });
   }
 };
+
+
+
+export const getRaidDetectionController = async (req, res) => {
+  try {
+    const data = await getRaidDetections();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to get raid detection", error: err.message });
+  }
+};
+
+
+
+
+export const getEventTrackingController = async (req, res) => {
+  try {
+    const data = await getEventTracking();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to get event tracking", error: err.message });
+  }
+};

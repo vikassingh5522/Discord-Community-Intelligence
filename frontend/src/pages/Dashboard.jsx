@@ -15,9 +15,11 @@ import EmojiTrendsPage from "./EmojiTrendsPage";
 import MemeTrendsPage from "./MemeTrendsPage";
 import LinkSharingPage from "./LinkSharingPage";
 import VoiceMetricsPage from "./VoiceMetricsPage";
-
-// ⭐ Load the FULL community health page
 import CommunityHealthPage from "./CommunityHealthPage";
+
+// ⭐ Newly added pages
+import RaidDetectionPage from "./RaidDetectionPage";
+import EventTrackingPage from "./EventTrackingPage";
 
 export default function Dashboard() {
   const [active, setActive] = useState("summary");
@@ -28,50 +30,25 @@ export default function Dashboard() {
     if (storedUser) setUsername(storedUser);
   }, []);
 
+  // ⭐ ROUTER FOR ALL PAGES
   const renderActive = () => {
     switch (active) {
-      case "summary":
-        return <SummaryPage />;
+      case "summary": return <SummaryPage />;
+      case "growth": return <GrowthPage />;
+      case "messages": return <MessageFrequency />;
+      case "channels": return <TopChannelsPage />;
+      case "activeUsers": return <ActiveUsersPage />;
+      case "trending": return <TrendingTopicsPage />;
+      case "roles": return <RoleDistributionPage />;
+      case "emoji": return <EmojiTrendsPage />;
+      case "memes": return <MemeTrendsPage />;
+      case "links": return <LinkSharingPage />;
+      case "voice": return <VoiceMetricsPage />;
+      case "community": return <CommunityHealthPage />;
 
-      case "growth":
-        return <GrowthPage />;
-
-      case "messages":
-        return <MessageFrequency />;
-
-      case "channels":
-        return <TopChannelsPage />;
-
-      case "activeUsers":
-        return <ActiveUsersPage />;
-
-      case "trending":
-        return <TrendingTopicsPage />;
-
-      case "roles":
-        return <RoleDistributionPage />;
-
-      case "emoji":
-        return <EmojiTrendsPage />;
-
-      case "memes":
-        return <MemeTrendsPage />;
-
-      case "links":
-        return <LinkSharingPage />;
-
-      case "voice":
-        return <VoiceMetricsPage />;
-
-      // ⭐ THIS IS THE FIX
-      case "community":
-        return <CommunityHealthPage />;
-
-      case "raids":
-        return <div className="text-white">Raid Detection Coming Soon...</div>;
-
-      case "events":
-        return <div className="text-white">Event Tracking Coming Soon...</div>;
+      // ⭐ NEW WORKING PAGES
+      case "raids": return <RaidDetectionPage />;
+      case "events": return <EventTrackingPage />;
 
       default:
         return <SummaryPage />;
@@ -85,16 +62,26 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="w-screen h-screen flex overflow-hidden" style={{ backgroundColor: "#0D1321" }}>
+    <div
+      className="w-screen h-screen flex overflow-hidden"
+      style={{ backgroundColor: "#0D1321" }}
+    >
+      {/* Sidebar Navigation */}
       <SidebarNav active={active} setActive={setActive} />
 
+      {/* Main Dashboard Area */}
       <div className="flex-1 flex flex-col">
+
+        {/* Header */}
         <header className="w-full h-16 bg-[#111827] text-white flex items-center justify-between px-6 shadow-md">
-          <h2 className="text-xl font-semibold tracking-wide">🚀 Discord Analytics Panel</h2>
+          <h2 className="text-xl font-semibold tracking-wide">
+            🚀 Discord Analytics Panel
+          </h2>
 
           <div className="flex items-center gap-4">
             <span className="text-sm opacity-80">
-              Welcome 👋 <span className="font-bold text-indigo-400">{username}</span>
+              Welcome 👋{" "}
+              <span className="font-bold text-indigo-400">{username}</span>
             </span>
 
             <button
@@ -106,6 +93,7 @@ export default function Dashboard() {
           </div>
         </header>
 
+        {/* Content */}
         <main className="flex-1 overflow-auto p-6 pt-6">
           <motion.div
             key={active}
@@ -117,6 +105,7 @@ export default function Dashboard() {
             {renderActive()}
           </motion.div>
         </main>
+
       </div>
     </div>
   );
