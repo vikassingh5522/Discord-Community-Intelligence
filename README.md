@@ -4,7 +4,6 @@
 
 A full-stack Discord analytics platform that transforms raw Discord server activity into meaningful insights for gaming and creator communities. The system includes a Discord bot + API layer, a Node.js analytics engine, and a React dashboard with real-time visualizations.
 
-> Live demo, screenshots and diagram placeholders are included below — add your images to `/docs/images` and update the paths.
 
 ---
 
