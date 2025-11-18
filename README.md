@@ -1,6 +1,4 @@
-Great — below is a ready-to-paste **README.md** for your repository **`Discord-Community-Intelligence`**. It’s complete, professional, and includes setup instructions, API docs, deployment hints, a data-flow diagram section, and a short LinkedIn post you can copy. Paste this into your repo root as `README.md`.
 
----
 
 # Discord Community Intelligence
 
