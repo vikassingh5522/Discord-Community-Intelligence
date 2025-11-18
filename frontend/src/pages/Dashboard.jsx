@@ -14,7 +14,10 @@ import RoleDistributionPage from "./RoleDistributionPage";
 import EmojiTrendsPage from "./EmojiTrendsPage";
 import MemeTrendsPage from "./MemeTrendsPage";
 import LinkSharingPage from "./LinkSharingPage";
-import VoiceMetricsPage from "./VoiceMetricsPage";   
+import VoiceMetricsPage from "./VoiceMetricsPage";
+
+// ⭐ Load the FULL community health page
+import CommunityHealthPage from "./CommunityHealthPage";
 
 export default function Dashboard() {
   const [active, setActive] = useState("summary");
@@ -57,21 +60,12 @@ export default function Dashboard() {
       case "links":
         return <LinkSharingPage />;
 
-      // ⭐ NOW VOICE METRICS PAGE WORKING
       case "voice":
         return <VoiceMetricsPage />;
 
+      // ⭐ THIS IS THE FIX
       case "community":
-        return <div className="text-white">Community Health Coming Soon...</div>;
-
-      case "toxicity":
-        return <div className="text-white">Toxicity Detection Coming Soon...</div>;
-
-      case "retention":
-        return <div className="text-white">Retention Analytics Coming Soon...</div>;
-
-      case "moderators":
-        return <div className="text-white">Moderator Effectiveness Coming Soon...</div>;
+        return <CommunityHealthPage />;
 
       case "raids":
         return <div className="text-white">Raid Detection Coming Soon...</div>;
@@ -84,7 +78,6 @@ export default function Dashboard() {
     }
   };
 
-
   const handleLogout = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("token");
@@ -93,20 +86,15 @@ export default function Dashboard() {
 
   return (
     <div className="w-screen h-screen flex overflow-hidden" style={{ backgroundColor: "#0D1321" }}>
-
       <SidebarNav active={active} setActive={setActive} />
 
       <div className="flex-1 flex flex-col">
-
         <header className="w-full h-16 bg-[#111827] text-white flex items-center justify-between px-6 shadow-md">
-          <h2 className="text-xl font-semibold tracking-wide">
-            🚀 Discord Analytics Panel
-          </h2>
+          <h2 className="text-xl font-semibold tracking-wide">🚀 Discord Analytics Panel</h2>
 
           <div className="flex items-center gap-4">
             <span className="text-sm opacity-80">
-              Welcome 👋
-              <span className="font-bold text-indigo-400"> {username} </span>
+              Welcome 👋 <span className="font-bold text-indigo-400">{username}</span>
             </span>
 
             <button

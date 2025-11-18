@@ -13,20 +13,23 @@ import About from "./pages/About";
 // Protected Dashboard
 import Dashboard from "./pages/Dashboard";
 
-// Protected Feature Pages
+// Feature Pages
 import EmojiTrendsPage from "./pages/EmojiTrendsPage";
 import MemeTrendsPage from "./pages/MemeTrendsPage";
 import LinkSharingPage from "./pages/LinkSharingPage";
-import VoiceMetricsPage from "./pages/VoiceMetricsPage"; 
+import VoiceMetricsPage from "./pages/VoiceMetricsPage";
+
+// ⭐ COMMUNITY HEALTH PAGE
+import CommunityHealthPage from "./pages/CommunityHealthPage";
 
 export default function App() {
   const location = useLocation();
 
-  // Hide navbar ONLY on dashboard page
   const hideNavbar = location.pathname === "/dashboard";
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br 
+    <div
+      className="min-h-screen w-full bg-gradient-to-br 
       from-gray-900 via-gray-800 to-black text-white flex flex-col"
     >
       {!hideNavbar && <Navbar />}
@@ -50,6 +53,7 @@ export default function App() {
             }
           />
 
+          {/* Analytics Pages */}
           <Route
             path="/emoji-trends"
             element={
@@ -82,6 +86,16 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <VoiceMetricsPage />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* ⭐ COMMUNITY HEALTH MASTER PAGE */}
+          <Route
+            path="/community-health"
+            element={
+              <ProtectedRoute>
+                <CommunityHealthPage />
               </ProtectedRoute>
             }
           />
