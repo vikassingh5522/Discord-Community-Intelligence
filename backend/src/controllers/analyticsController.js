@@ -140,3 +140,49 @@ export const getVoiceMetricsController = async (req, res) => {
     });
   }
 };
+
+
+
+
+import {
+  getEngagementScores,
+  getToxicityStats,
+  getNewMemberRetention,
+  getModeratorEffectiveness
+} from "../utils/analytics.js";
+
+export const getEngagementScoreController = async (req, res) => {
+  try {
+    const data = await getEngagementScores();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to get engagement score", error: err.message });
+  }
+};
+
+export const getToxicityStatsController = async (req, res) => {
+  try {
+    const data = await getToxicityStats();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to get toxicity stats", error: err.message });
+  }
+};
+
+export const getMemberRetentionController = async (req, res) => {
+  try {
+    const data = await getNewMemberRetention();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to get retention", error: err.message });
+  }
+};
+
+export const getModeratorEffectivenessController = async (req, res) => {
+  try {
+    const data = await getModeratorEffectiveness();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to get moderator effectiveness", error: err.message });
+  }
+};

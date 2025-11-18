@@ -452,3 +452,111 @@ export const getVoiceMetrics = async (topN = 10) => {
     topEmojis
   };
 };
+
+
+// import { loadAllData } from "./dataLoader.js";
+
+// ENGAGEMENT SCORE
+export const getEngagementScores = async () => {
+  const { users, messages } = await loadAllData();
+
+  const scoreMap = {};
+
+  users.forEach(u => {
+    scoreMap[u.id] = {
+      userId: u.id,
+      username: u.username,
+      messages: 0,
+      reactions: u.reactions || 0,
+      channelsJoined: u.channelsJoined || 0,
+      score: 0
+    };
+  });
+
+  messages.forEach(m => {
+    if (scoreMap[m.userId]) scoreMap[m.userId].messages++;
+  });
+
+  Object.values(scoreMap).forEach(u => {
+    u.score = (u.messages * 1) + (u.reactions * 0.5) + (u.channelsJoined * 0.3);
+  });
+
+  return {
+    topUsers: Object.values(scoreMap)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 10)
+  };
+};
+
+// TOXICITY
+export const getToxicityStats = async () => {
+  const { users, messages } = await loadAllData();
+
+  const toxicWords = ["bad", "idiot", "stupid", "ugly", "hate", "kill"];
+
+  const stats = {};
+  users.forEach(u => stats[u.id] = {
+    userId: u.id,
+    username: u.username,
+    toxicMessages: 0
+  });
+
+  messages.forEach(m => {
+    const text = (m.content || "").toLowerCase();
+    if (toxicWords.some(w => text.includes(w))) {
+      stats[m.userId].toxicMessages++;
+    }
+  });
+
+  return {
+    toxicity: Object.values(stats).sort((a, b) => b.toxicMessages - a.toxicMessages)
+  };
+};
+
+// RETENTION
+export const getNewMemberRetention = async () => {
+  const { users } = await loadAllData();
+
+  const now = new Date();
+  const last30 = new Date(now);
+  last30.setDate(now.getDate() - 30);
+
+  const newMembers = users.filter(u => new Date(u.joinedAt) >= last30);
+
+  const oneWeekAgo = new Date();
+  oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+  let retained = 0;
+  newMembers.forEach(u => {
+    if (new Date(u.lastActive) >= oneWeekAgo) retained++;
+  });
+
+  return {
+    newMembers: newMembers.length,
+    retained,
+    retentionRate:
+      newMembers.length > 0
+        ? ((retained / newMembers.length) * 100).toFixed(2)
+        : 0
+  };
+};
+
+// MODERATOR EFFECTIVENESS
+export const getModeratorEffectiveness = async () => {
+  const { users } = await loadAllData();
+
+  const mods = users.filter(u => u.role === "Moderator" || u.role === "Admin");
+
+  return {
+    moderators: mods
+      .map(m => ({
+        userId: m.id,
+        username: m.username,
+        warnings: m.warnings || 0,
+        deletedMessages: m.deletedMessages || 0,
+        spamRemoved: m.spamRemoved || 0,
+        averageResponseTime: m.avgResponseTime || 0
+      }))
+      .sort((a, b) => b.deletedMessages - a.deletedMessages)
+  };
+};

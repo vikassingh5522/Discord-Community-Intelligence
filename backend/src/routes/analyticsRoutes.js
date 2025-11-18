@@ -12,7 +12,11 @@ import {
   getEmojiTrendsController,
   getMemeTrendsController,
   getLinkSharingController,
-  getVoiceMetricsController
+  getVoiceMetricsController,
+  getEngagementScoreController,
+  getToxicityStatsController,
+  getMemberRetentionController,
+  getModeratorEffectivenessController
 } from "../controllers/analyticsController.js";
 
 import { authMiddleware } from "../middlewares/authMiddleware.js";
@@ -34,7 +38,12 @@ router.get("/emoji-trends", authMiddleware, getEmojiTrendsController);
 router.get("/meme-trends", authMiddleware, getMemeTrendsController);
 router.get("/link-sharing", authMiddleware, getLinkSharingController);
 
-
 router.get("/voice-metrics", authMiddleware, getVoiceMetricsController);
+
+router.get("/engagement", authMiddleware, getEngagementScoreController);
+router.get("/toxicity", authMiddleware, getToxicityStatsController);
+router.get("/retention", authMiddleware, getMemberRetentionController);
+router.get("/moderators", authMiddleware, getModeratorEffectivenessController);
+
 
 export default router;
